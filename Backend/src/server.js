@@ -9,7 +9,7 @@ const port = process.env.PORT || 4000;
 connectDB()
 .then(() => {
     app.listen(port , () => {
-        console.log(`SubSentry API listening on port ${port}`);
+        console.log(`ThreatLens API listening on port ${port}`);
     })
 })
 .catch((error) => {
