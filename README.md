@@ -19,7 +19,7 @@ Use Node.js compatible with the installed Vite version and MongoDB. Install depe
 Backend: create `Backend/.env` with:
 
 ```env
-PORT=4000
+PORT=5000
 DB_URL=mongodb://127.0.0.1:27017
 JWT_ACCESS_SECRET=replace-with-a-long-random-secret
 JWT_REFRESH_SECRET=replace-with-a-different-long-random-secret
@@ -33,7 +33,7 @@ CORS_ORIGINS=http://localhost:5173
 Frontend: optionally set `Frontend/.env`:
 
 ```env
-VITE_API_URL=http://localhost:4000/api
+VITE_API_URL=http://localhost:5000/api
 ```
 
 Start the API from `Backend` with `npm run dev` and the frontend from `Frontend` with `npm run dev`. Create an account through the UI; registration requires a password of at least 10 characters. No default administrator account is seeded.

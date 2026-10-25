@@ -11,7 +11,7 @@ npm install
 Optional `Frontend/.env`:
 
 ```env
-VITE_API_URL=http://localhost:4000/api
+VITE_API_URL=http://localhost:5000/api
 ```
 
 Run `npm run dev`, `npm run lint`, and `npm run build`. Configure the backend `CORS_ORIGINS` to include the frontend origin. The API refresh endpoint sets an HTTP only cookie; do not configure the API and frontend origins in a way that requires cross-site cookies without setting up an appropriate HTTPS and SameSite policy.
