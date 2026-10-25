@@ -1,16 +1,17 @@
-# React + Vite
+﻿# ThreatLens Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite security dashboard. The frontend uses Axios with credentialed requests, in-memory access-token storage, automatic refresh-cookie exchange, and React Toastify notifications.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+```
 
-## React Compiler
+Optional `Frontend/.env`:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```env
+VITE_API_URL=http://localhost:4000/api
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Run `npm run dev`, `npm run lint`, and `npm run build`. Configure the backend `CORS_ORIGINS` to include the frontend origin. The API refresh endpoint sets an HTTP only cookie; do not configure the API and frontend origins in a way that requires cross-site cookies without setting up an appropriate HTTPS and SameSite policy.

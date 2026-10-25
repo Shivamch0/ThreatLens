@@ -8,10 +8,11 @@ const port = process.env.PORT || 4000;
 
 connectDB()
 .then(() => {
-    app.listen(port , () => {
+    app.listen(port, () => {
         console.log(`ThreatLens API listening on port ${port}`);
-    })
+    });
 })
 .catch((error) => {
-    console.error('Something went wrong while connecting the database', error.message);
-})
+    console.error('ThreatLens failed to start:', error.message);
+    process.exitCode = 1;
+});
