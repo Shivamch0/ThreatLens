@@ -12,7 +12,15 @@ export default function EventsPage() {
     try { setEvents((await fetchEvents({ search: search || undefined })).events); }
     catch (error) { toast.error(error.response?.data?.message || "Unable to load events"); }
   }, [search]);
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    let active = true;
+    fetchEvents({ search: search || undefined }).then((result) => {
+      if (active) setEvents(result.events);
+    }).catch((error) => {
+      toast.error(error.response?.data?.message || "Unable to load events");
+    });
+    return () => { active = false; };
+  }, [search]);
 
   async function addEvent(event) {
     try { await createEvent(event); toast.success("Security event recorded"); await load(); return true; }

@@ -14,7 +14,13 @@ export default function OverviewPage() {
     try { setDashboard(await fetchDashboard()); }
     catch (error) { toast.error(error.response?.data?.message || "Unable to load overview"); }
   }, []);
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    let active = true;
+    fetchDashboard().then((data) => { if (active) setDashboard(data); }).catch((error) => {
+      toast.error(error.response?.data?.message || "Unable to load overview");
+    });
+    return () => { active = false; };
+  }, []);
   const updateStatus = useAlertStatusActions(load);
 
   return <div className="page-content"><PageHeader title="Security overview" description="Monitor authentication activity and investigate suspicious patterns." onRefresh={load} />

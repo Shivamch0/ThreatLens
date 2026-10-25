@@ -11,7 +11,13 @@ export default function AlertsPage() {
     try { setAlerts(await fetchAlerts()); }
     catch (error) { toast.error(error.response?.data?.message || "Unable to load alerts"); }
   }, []);
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    let active = true;
+    fetchAlerts().then((result) => { if (active) setAlerts(result); }).catch((error) => {
+      toast.error(error.response?.data?.message || "Unable to load alerts");
+    });
+    return () => { active = false; };
+  }, []);
   const updateStatus = useAlertStatusActions(load);
 
   return <div className="page-content"><PageHeader title="Alerts & incidents" description="Review and update rule triggered findings." onRefresh={load} /><section className="panel"><div className="panel-heading"><div><h2>Detection alerts</h2><p>Explainable findings for analyst review</p></div></div><AlertList alerts={alerts} onStatus={updateStatus} /></section></div>;
