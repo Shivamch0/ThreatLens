@@ -1,4 +1,4 @@
-﻿# ThreatLens
+# ThreatLens
 
 ThreatLens is a defensive security monitoring demo for collecting authentication events, flagging repeated failed logins, and reviewing explainable alerts.
 
